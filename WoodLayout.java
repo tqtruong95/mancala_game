@@ -16,8 +16,8 @@ public class WoodLayout extends BoardLayout{
 		}
 	}
 	
-	public void display(Graphics g, Board b){
+	public void display(Graphics g, Board b, Mancala game){
 		g.drawImage(background, 0, 0, 1100, 600, b);
-		super.display(g, b);
+		super.display(g, b, game);
 	}
 }

@@ -47,7 +47,7 @@ public class BoardLayout {
 		
 	}
 	
-	public void display(Graphics g, Board b){
+	public void display(Graphics g, Board b, Mancala game){
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setStroke(new java.awt.BasicStroke(5)); 
 		for(int i = 0; i < pits.length; i++){

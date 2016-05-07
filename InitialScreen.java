@@ -95,7 +95,7 @@ public class InitialScreen extends JDialog{
 				//					String input = in.nextLine();
 				//					game.select(Integer.parseInt(input));
 				//				}
-				Board b = new Board(layout);
+				Board b = new Board(layout, game);
 				MancalaGUI gui = new MancalaGUI(b, game);
 			}
 		});

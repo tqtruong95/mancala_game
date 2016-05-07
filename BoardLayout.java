@@ -17,7 +17,7 @@ public class BoardLayout {
 		pits[1][6] = mancala2;
 		for(int i = 5; i >= 0; i--){
 			Rectangle2D.Double pit = new Rectangle2D.Double(200 + 120*i, 110, 100, 150);
-			pits[1][i] = pit;
+			pits[1][5-i] = pit;
 		}
 		for(int i = 0; i < 7; i++){
 			if(i < 6){
@@ -55,5 +55,9 @@ public class BoardLayout {
 				g2.draw(pits[i][j]);
 			}
 		}
+	}
+	
+	public Rectangle2D.Double[][] getPits(){
+		return pits;
 	}
 }

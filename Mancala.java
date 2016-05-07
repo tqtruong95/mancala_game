@@ -97,13 +97,13 @@ public class Mancala {
 						hand--;
 						// counter--; dont know if i need this 
 						counter++;
+						endPos = i;
 					}
 
 					if (hand == 0)
 					{
 						whoSide = player1.getName();
-						endPos = i;
-						if (player1.getName() != whoSide || endPos != 1 )
+						if (player1.getName() != whoSide || endPos < 6 )
 						{
 							player1.switchPlayer();
 							player2.switchPlayer();
@@ -112,6 +112,7 @@ public class Mancala {
 
 						break;
 					}
+					
 
 				}
 
@@ -123,9 +124,8 @@ public class Mancala {
 						if (hand == 0)
 						{
 							whoSide = player2.getName();
-							endPos = i;
 
-							if (player1.getName() != whoSide || endPos != 1 )
+							if (player1.getName() != whoSide || endPos < 6 )
 							{
 								player1.switchPlayer();
 								player2.switchPlayer();
@@ -139,8 +139,7 @@ public class Mancala {
 						player2.add(i); // 0 the starting point of player 2 array and board 
 						hand--;
 						counter++;
-
-
+						endPos = i;
 					}
 
 					if (hand != 0)
@@ -152,8 +151,7 @@ public class Mancala {
 							if (hand == 0)
 							{
 								whoSide = player1.getName();
-								endPos = i;
-								if (player1.getName() != whoSide || endPos != 1)
+								if (player1.getName() != whoSide || endPos < 6)
 								{
 									player1.switchPlayer();
 									player2.switchPlayer();
@@ -165,7 +163,7 @@ public class Mancala {
 							player1.add(i); // 0 the starting point of player 2 array and board 
 							hand--;
 							counter++;
-
+							endPos = i;
 						}
 					}
 				}
@@ -197,13 +195,13 @@ public class Mancala {
 						hand--;
 						counter++;
 						// counter--; dont know if i need this 
+						endPos = i;
 					}
 
 					if (hand == 0)
 					{
 						whoSide = player2.getName();
-						endPos = i;
-						if (player2.getName() != whoSide || endPos != 1 )
+						if (player2.getName() != whoSide || endPos < 6 )
 						{
 							player2.switchPlayer();
 							player1.switchPlayer();
@@ -212,7 +210,6 @@ public class Mancala {
 
 						break;
 					}
-
 				}
 
 				if (hand != 0)
@@ -224,8 +221,7 @@ public class Mancala {
 						if (hand == 0)
 						{
 							whoSide = player1.getName();
-							endPos = i;
-							if (player2.getName() != whoSide || endPos != 1)
+							if (player2.getName() != whoSide || endPos < 6)
 							{
 								player2.switchPlayer();
 								player1.switchPlayer();
@@ -237,7 +233,7 @@ public class Mancala {
 						player1.add(i); // 0 the starting point of player 2 array and board 
 						hand--;
 						counter++;
-
+						endPos = i;
 
 					}
 
@@ -248,12 +244,10 @@ public class Mancala {
 							if (hand == 0)
 							{
 								whoSide = player2.getName();
-								endPos = i;
-								if (player2.getName() != whoSide || endPos != 1)
+								if (player2.getName() != whoSide || endPos < 6)
 								{
 									player2.switchPlayer();
 									player1.isGoing();
-
 								}
 
 								break;
@@ -262,7 +256,7 @@ public class Mancala {
 							player2.add(i); // 0 the starting point of player 2 array and board 
 							hand--;
 							counter++;
-
+							endPos = i;
 						}
 					}
 				}
@@ -271,6 +265,7 @@ public class Mancala {
 		for(ChangeListener l : listeners){
 			l.stateChanged(new ChangeEvent(this));
 		}
+		printBoard();
 	}	
 
 	/**
@@ -555,6 +550,21 @@ public class Mancala {
 		return data;
 	}
 
-
+	public int whoGoing(){
+		if(player1.isGoing())
+			return player1.getName();
+		else
+			return player2.getName();
+	}
+	
+	public void printBoard(){
+		int[] player2Pit = player2.getData();
+		int[] player1Pit = player1.getData();
+		System.out.println("  " + player2Pit[5] + " " + player2Pit[4] + " " + player2Pit[3] +
+				" " + player2Pit[2] + " " + player2Pit[1] + " " + player2Pit[0]);
+		System.out.println(player2Pit[6] + "             " + player1Pit[6]);
+		System.out.println("  " + player1Pit[0] + " " + player1Pit[1] + " " + player1Pit[2] +
+				" " + player1Pit[3] + " " + player1Pit[4] + " " + player1Pit[5]);
+	}
 }
 

@@ -550,6 +550,10 @@ public class Mancala {
 		return data;
 	}
 
+	/**
+	 * check who is going
+	 * @return 0 for player 1 and 1 for player 2
+	 */
 	public int whoGoing(){
 		if(player1.isGoing())
 			return player1.getName();
@@ -557,7 +561,8 @@ public class Mancala {
 			return player2.getName();
 	}
 	
-	public void printBoard(){
+	//use for tester
+	private void printBoard(){
 		int[] player2Pit = player2.getData();
 		int[] player1Pit = player1.getData();
 		System.out.println("  " + player2Pit[5] + " " + player2Pit[4] + " " + player2Pit[3] +

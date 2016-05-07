@@ -1,12 +1,18 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.Rectangle2D.Double;
+import java.io.File;
+import java.io.IOException;
+import java.util.Random;
+
+import javax.imageio.ImageIO;
 
 public class BoardLayout {
 	private Rectangle2D.Double[][] pits;
-	private int stones;
+	private Image stone;
 	
 	/**
 	 * Construct a new board layout
@@ -28,7 +34,12 @@ public class BoardLayout {
 				Rectangle2D.Double mancala1 = new Rectangle2D.Double(200 + 120*i, 80, 100, 410);
 				pits[0][i] = mancala1;
 			}
-			
+		}
+		try {
+			this.stone = ImageIO.read(new File("mancala_project/stone.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 //		g.fillRect(0, 80, 1000, 400);
 //		g.setColor(Color.WHITE);
@@ -55,7 +66,39 @@ public class BoardLayout {
 				g2.draw(pits[i][j]);
 			}
 		}
+		
+		//draw stones
+		int[][] stoneCount = game.getPits();
+		for(int r = 0; r < pits.length; r++){
+			for(int c = 0; c < pits[r].length; c++){
+				for(int n = 0; n < stoneCount[r][c]; n++){
+					drawStone(pits[r][c], g2, b, n);
+				}
+			}
+		}
 	}
+	
+	//Change up this code
+		private void drawStone(Rectangle2D.Double r, Graphics g, Board b, int n)
+		{
+			Random rand = new Random();
+			rand.setSeed((int)r.getX() * n +  (int)r.getY() * n + n * n);
+			int x = rand.nextInt((int)r.getWidth() - stone.getWidth(b));
+			int y = rand.nextInt((int)r.getHeight() - stone.getHeight(b));
+			g.drawImage(stone, (int)r.getX() + x, (int)r.getY() + y, 25,
+					25, b);
+			
+			/*for(int i = 0; i < pits.length; i++)
+			{
+				g.drawImage(stone, (int)r.getX() + i+1, (int)r.getY() + y, 25,
+						25, b);
+			} 
+			for(int i = 0; i < pits.length; i+=200)
+			{
+				g.drawImage(stone, (int)r.getX() + i + 50, (int)r.getY() + y, 25,
+						25, b);
+			}*/
+		}
 	
 	public Rectangle2D.Double[][] getPits(){
 		return pits;

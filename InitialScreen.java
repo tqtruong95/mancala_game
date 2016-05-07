@@ -90,13 +90,9 @@ public class InitialScreen extends JDialog{
 				MancalaPlayer p1 = new MancalaPlayer(0 , true, numberOfStones);
 				MancalaPlayer p2 = new MancalaPlayer(1 , false, numberOfStones);
 				Mancala game = new Mancala(p1, p2);
-				//				Scanner in = new Scanner(System.in);
-				//				while(in.hasNextLine()){
-				//					String input = in.nextLine();
-				//					game.select(Integer.parseInt(input));
-				//				}
 				Board b = new Board(layout, game);
 				MancalaGUI gui = new MancalaGUI(b, game);
+				game.addChangeListener(gui);
 			}
 		});
 

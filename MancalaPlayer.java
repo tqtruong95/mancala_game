@@ -1,3 +1,6 @@
+/**
+ * The Mancala player class 
+ */
 public class MancalaPlayer{
 
 	private int name;
@@ -8,7 +11,13 @@ public class MancalaPlayer{
 
 	// each player might need a "hand" and acessor, getter. and setter 
 	//might need to store stones and set how each game has?
-
+	
+	/**
+	 * Constructing the Mancala Player. 
+	 * @param name The name of the player
+	 * @param b Determines who is going 
+	 * @param stones The number of stones in the board game
+	 */
 	public MancalaPlayer(int name, boolean b, int stones)
 	{
 		this.name = name;
@@ -21,16 +30,27 @@ public class MancalaPlayer{
 		this.usedUndo = false;
 	}
 	
+	/**
+	 * Returns the array of stones in each pit.
+	 * @return mancala The number of mancala stones
+	 */
 	public int[] getData(){
 		return mancala;
 	}
 
+	/**
+	 * Returns the name of the player
+	 * @return name the Name of player
+	 */
 	public int getName()
 	{
 		return name;
 
 	}
-
+	/**
+	 * Check if user undo the board game
+	 * @return true if user undo board game. False otherwise.
+	 */
 	public boolean checkUndos()
 	{
 		if (this.undos > 0)
@@ -40,7 +60,9 @@ public class MancalaPlayer{
 		return false;
 	}
 
-
+	/**
+	 * Gets the restarted position of the board game
+	 */
 	public void getUndo()
 	{
 
@@ -52,7 +74,11 @@ public class MancalaPlayer{
 		}
 
 	}
-
+	
+	/**
+	 * Player uses undo
+	 * @return usedUndo Returns true if player uses undo
+	 */
 	public boolean usedUndo()
 	{
 		usedUndo = true;
@@ -61,7 +87,10 @@ public class MancalaPlayer{
 	}
 
 
-	//pick the pit and set it to 0
+	/**
+	 * Retrieve the number of stones in the given index
+	 * @param index Gets the index of the stones 
+	 */
 	public int get(int index)
 	{
 		int stones = mancala[index];
@@ -69,8 +98,10 @@ public class MancalaPlayer{
 		return stones;
 	}
 
-
-	public void add(int p) // adding stones to pit 
+	/**
+	 * Adds stone to the mancala pits
+	 */
+	public void add(int p) 
 	{
 		int x; // save the reference of what is in mancala position 
 		//int h = hand;	   
@@ -78,7 +109,9 @@ public class MancalaPlayer{
 		mancala[p] = x + 1;
 
 	}
-
+	/**
+	 * Subtracts the number of stones from the mancala pits 
+	 */
 	public void subtract(int p) // subtracting stones 
 	{
 		int x; // save the reference of what is in mancala position 
@@ -87,19 +120,30 @@ public class MancalaPlayer{
 		mancala[p] = x - 1;
 
 	}
-
+	
+	/**
+	 * Checks if the player is going
+	 * @return true if the player is going
+	 */
 	public boolean isGoing() 
 	{
 //		isGoing = true; // testing purposes 
 		return isGoing;
 	}
 
+	/**
+	 * Switches player after the player finishes going. 
+	 */
 	public void switchPlayer() // testing purposes 
 	{
 		isGoing = !isGoing;
 		if(usedUndo) usedUndo = false;
 	}
 
+	/**
+	 * Checks if the game is over
+	 * @return true The game is over because there are no more stones left in one of the players pits
+	 */
 	public boolean gameOver()
 	{
 		for(int i = 0; i < mancala.length-1; i++)
@@ -109,7 +153,11 @@ public class MancalaPlayer{
 		}
 		return true;
 	}
-
+	
+	/**
+	 * Get the array of mancala stones
+	 * @return mancala the number of mancala
+	 */
 	public int getMancala()
 	{
 		return mancala[mancala.length - 1];

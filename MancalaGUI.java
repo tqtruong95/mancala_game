@@ -7,9 +7,17 @@ import javax.swing.JFrame;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ * The Mancala Board Game GUI 
+ */
 public class MancalaGUI extends JFrame implements ChangeListener{
 	private Board board;
 	private Mancala game;
+	/**
+	 *  Constructing the Mancala GUI Board Game
+	 * @param b the Mancala Board
+	 * @param game the Mancala game
+	 */
 	public MancalaGUI(Board b, Mancala game){
 		this.game = game;
 		this.board = b;

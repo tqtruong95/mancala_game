@@ -10,6 +10,12 @@ import javax.swing.event.ChangeListener;
 public class MancalaGUI extends JFrame implements ChangeListener{
 	private Board board;
 	private Mancala game;
+	
+	/**
+	 * Construct a new window for the game
+	 * @param b the mancala board
+	 * @param game the database of mancala
+	 */
 	public MancalaGUI(Board b, Mancala game){
 		this.game = game;
 		this.board = b;

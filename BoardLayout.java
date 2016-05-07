@@ -41,23 +41,12 @@ public class BoardLayout {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		g.fillRect(0, 80, 1000, 400);
-//		g.setColor(Color.WHITE);
-//		g.fillRect(70, 150, 110, 300);
-//		g.fillRect(800, 150, 110, 300);
-//		for(int i = 200; i <= 700; i+=100)
-//		{
-//			g.clearRect(i, 200, 80, 80);
-//
-//		} 
-//
-//		for(int j = 200; j <= 700; j+=100)
-//		{
-//			g.clearRect(j, 300, 80, 80);
-//		}
 		
 	}
 	
+	/**
+	 * draw the pits and the stones
+	 */
 	public void display(Graphics g, Board b, Mancala game){
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setStroke(new java.awt.BasicStroke(5)); 
@@ -78,28 +67,21 @@ public class BoardLayout {
 		}
 	}
 	
-	//Change up this code
-		private void drawStone(Rectangle2D.Double r, Graphics g, Board b, int n)
-		{
-			Random rand = new Random();
-			rand.setSeed((int)r.getX() * n +  (int)r.getY() * n + n * n);
-			int x = rand.nextInt((int)r.getWidth() - stone.getWidth(b));
-			int y = rand.nextInt((int)r.getHeight() - stone.getHeight(b));
-			g.drawImage(stone, (int)r.getX() + x, (int)r.getY() + y, 25,
-					25, b);
-			
-			/*for(int i = 0; i < pits.length; i++)
-			{
-				g.drawImage(stone, (int)r.getX() + i+1, (int)r.getY() + y, 25,
-						25, b);
-			} 
-			for(int i = 0; i < pits.length; i+=200)
-			{
-				g.drawImage(stone, (int)r.getX() + i + 50, (int)r.getY() + y, 25,
-						25, b);
-			}*/
+	/**
+	 * Helper method to draw the stone 
+	 */
+	private void drawStone(Rectangle2D.Double r, Graphics g, Board b, int n){
+		Random rand = new Random();
+		rand.setSeed((int)r.getX() * n +  (int)r.getY() * n + n * n);
+		int x = rand.nextInt((int)r.getWidth() - stone.getWidth(b));
+		int y = rand.nextInt((int)r.getHeight() - stone.getHeight(b));
+		g.drawImage(stone, (int)r.getX() + x, (int)r.getY() + y, 25, 25, b);
 		}
 	
+	/**
+	 * get the array of rectangles(pits)
+	 * @return array of rectangles
+	 */
 	public Rectangle2D.Double[][] getPits(){
 		return pits;
 	}
